@@ -1,1 +1,60 @@
-<script src="https://gist.github.com/grunklestanlee/d0a30c72fde27f3a266f6afba8ee0d77.js"></script>
+
+<html>
+
+<head>
+
+<title>salem bot.py</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+<style type="text/css">
+
+.s0 { color: #cc7832;}
+
+.s1 { color: #a9b7c6;}
+
+.s2 { color: #6a8759;}
+
+</style>
+
+</head>
+
+<body bgcolor="#2b2b2b">
+
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+
+<tr><td><center>
+
+<font face="Arial, Helvetica" color="#000000">
+
+salem bot.py</font>
+
+</center></td></tr></table>
+
+<pre><span class="s0">def </span><span class="s1">(check):</span>
+
+<span class="s0">if </span><span class="s2">&quot;s!addrole&quot;</span><span class="s1">:</span>
+
+    function <span class="s2">&quot;addrole&quot;</span>
+
+    <span class="s0">if </span><span class="s2">&quot;s!begin&quot;</span><span class="s1">:</span>
+
+        function: <span class="s2">&quot;hosting&quot;</span>
+
+        <span class="s0">if </span><span class="s2">&quot;s!warn&quot;</span><span class="s1">:</span>
+
+        function <span class="s2">&quot;warn&quot;</span>
+
+<span class="s1">:</span>
+
+exec(check)
+
+
+
+
+
+</pre>
+
+</body>
+
+</html>
