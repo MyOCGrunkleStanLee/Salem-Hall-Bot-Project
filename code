@@ -1,1 +1,92 @@
-##here is where actual code goes
+import discord
+
+
+class MyClient(discord.Client):
+    async def on_ready(self):
+        print('Logged in as')
+        print(self.user.name)
+        print(self.user.id)
+        print('------')
+
+    async def on_message(self, message):
+        # we do not want the bot to reply to itself
+        if message.author.id == self.user.id:
+            return
+
+        if message.content == "sh!help":
+            await message.channel.send("""
+        help commands:
+        sh@help: for admin commands
+        sh!help hosting: for info on how to host lists
+        sh!help info: for help on how to get statistics
+        sh!help roles: how to apply roles to yourself or take roles from yourself
+            """)
+        if message.content.startswith("sh@help"):
+            if 588044780374720574 in [role.id for role in message.author.roles]:
+                await message.channel.send("""
+            admin commands:
+            s@punish @(player): applies the next stage of punishment to a player 
+            s@promote @(player): gives member council man or chairman
+            s@addlist: gives prompt to add list to database
+            s@editlist: gives ability to edit a list (not recommended)
+            """)
+            else:
+                await message.channel.send("you do not have permission")
+        if message.content.startswith("sh!help hosting"):
+            await message.channel.send("""
+            hosting commands:
+            sh!begin (list): begins the hosting process pinging everyone and generating a Playtesting Number Indicator 
+            sh!cancel: cancels list being hosted deleting the Playtesting Number Indicator (can only be done by host)
+            sh!join: allows players to join the list and be recorded in the statistics (optional)
+            sh!leave: allows players to leave games they are a part of
+            sh!start: starts the list being hosted and starts keeping track of statistics
+            sh!end: ends the current game and gives information, also prompts host to fill out some optional info
+            """)
+        if message.content.startswith("sh!help info"):
+            await message.channel.send("""
+            information commands:
+            sh!info: gives information about how many custom games have been hosted by server
+            sh!info (list): gives all information of that list
+            sh!info (Playtesting Number Indicator): gives information about a specific game
+            sh!info (role): gives information about a specific tos role
+            """)
+        if message.content.startswith("sh!help roles"):
+            await message.channel.send("""
+            role commands
+            sh!role apply (role): applies a cosmetic tos role or a ping role to yourself (takes off old roles)
+            sh!role list: sends a list of all the applicable roles
+            """)
+
+# end of help section start of the role change section
+
+        role_list = ["blackmailer", "consigliere", "consort", "disguiser", "framer", "godfather", "janitor",
+                     "mafioso", "bodyguard", "doctor", "escort", "investigator", "jailor", "lookout", "mayor",
+                     "medium", "retributionist", "sheriff", "spy", "transporter", "veteran", "vigilante",
+                     "amnesiac", "arsonist", "executioner", "jester", "serial Killer", "survivor", "witch"]
+        if message.content.startswith("sh!role list"):
+            await message.channel.send("""
+**COSMETIC**
+Any ToS role
+Coven Owner
+**PINGABLE**
+Coven Custom
+Classic Custom
+VIP
+Lovers
+Other Games""")
+        if message.content.startswith("sh!apply"):
+            apply = False
+            for roles in role_list:
+                if roles in message.content:
+                    apply = True
+                    await message.channel.send("this actually works!")
+        if apply is False:
+            await message.channel.send("use sh!role list for a list of available roles")
+
+
+client = MyClient()
+client.run("NTc2ODAwNDI1MzQ5NDgwNDQ5.XP6jJQ.YTV1FdHj2yS9jbm80RhGHC4YP0U")
+
+# <@&568998234609942528> councilman
+# <@&569220645666422814> chairman
+
